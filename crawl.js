@@ -53,7 +53,6 @@ const crawlPage = async (baseURL, currentURL, pages) => {
             'Content-Type': 'text/html'
         }
     }) 
-    console.log(response.status)
     
     if (response.status > 399) {
         console.log("Error - ", response.status)

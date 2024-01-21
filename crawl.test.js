@@ -2,10 +2,10 @@ const {test, expect} = require('@jest/globals')
 const {normalizeURL, getUrlsFromHTLML} = require('./crawl.js')
 
 test('normalizeURLWithProtocol', () => {
-    expect(normalizeURL("https://blog.boot.dev/path/")).toBe("blog.boot.dev")
-    expect(normalizeURL("https://blog.boot.dev/path")).toBe("blog.boot.dev")
-    expect(normalizeURL("http://blog.boot.dev/path/")).toBe("blog.boot.dev")
-    expect(normalizeURL("http://blog.boot.dev/path")).toBe("blog.boot.dev")
+    expect(normalizeURL("https://blog.boot.dev/path/")).toBe("blog.boot.dev/path")
+    expect(normalizeURL("https://blog.boot.dev/path")).toBe("blog.boot.dev/path")
+    expect(normalizeURL("http://blog.boot.dev/path/")).toBe("blog.boot.dev/path")
+    expect(normalizeURL("http://blog.boot.dev/path")).toBe("blog.boot.dev/path")
 });
 
 // TODO: IMPLEMENT THIS TEST / Solution
