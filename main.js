@@ -14,12 +14,11 @@ const main = () => {
         const baseURL = normalizeURL(url)
         const currentURL = baseURL
         const pages = crawlPage(baseURL, currentURL, {})
+        console.log(pages)
     } catch (error) {
         console.log(error)
     }
 
-    console.log(pages)   
-    
 }
 
 main()
