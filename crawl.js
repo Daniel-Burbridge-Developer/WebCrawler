@@ -18,6 +18,23 @@ const getUrlsFromHTLML = (htmlBody, baseURL="") => {
     return links
 }
 
+const crawlPage = async (url) => {
+    const response = await fetch(url, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'text/html'
+        }
+    })
+    if (response.status > 399) {
+        console.log("Error - ", response.status)
+        return
+    }
+    const htmlBody = await response.text()
+
+    console.log(htmlBody)
+}
+
+
 module.exports = {
     normalizeURL, getUrlsFromHTLML
 }

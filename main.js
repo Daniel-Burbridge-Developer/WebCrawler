@@ -1,4 +1,5 @@
 const {normalizeURL} = require('./crawl.js')
+const {crawlPage} = require('./crawl.js')
 
 const main = () => {
 
@@ -7,7 +8,7 @@ const main = () => {
         process.exit()
     }
 
-        console.log(`BASE URL = ${process.argv[2]}`)
+    crawlPage('https://wagslane.dev')
     
 }
 
