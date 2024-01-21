@@ -2,11 +2,13 @@ const {normalizeURL} = require('./crawl.js')
 
 const main = () => {
 
-    normalizeURL("https://blog.boot.dev/path/");
-    normalizeURL("https://blog.boot.dev/path");
-    normalizeURL("http://blog.boot.dev/path/");
-    normalizeURL("http://blog.boot.dev/path");
+    if ((process.argv.length < 3) || (process.argv.length > 3)) {
+        console.log("Yeah No");
+        process.exit()
+    }
 
+        console.log(`BASE URL = ${process.argv[2]}`)
+    
 }
 
 main()
