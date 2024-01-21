@@ -1,7 +1,7 @@
+const nodeUrl = require('node:url')
 
-
-normalizeURL = (url) => {
-    return ("www.example.com")
+const normalizeURL = (url) => {
+    return nodeUrl.parse(url).hostname
 }
 
 module.exports = {

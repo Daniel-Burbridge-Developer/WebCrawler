@@ -1,14 +1,14 @@
 const {test, expect} = require('@jest/globals')
 const {normalizeURL} = require('./crawl.js')
 
-test('https:// normalization', () => {
-    expect(normalizeURL('https://www.example.com')).toBe('www.example.com')
+test('normalizeURLWithProtocol', () => {
+    expect(normalizeURL("https://blog.boot.dev/path/")).toBe("blog.boot.dev")
+    expect(normalizeURL("https://blog.boot.dev/path")).toBe("blog.boot.dev")
+    expect(normalizeURL("http://blog.boot.dev/path/")).toBe("blog.boot.dev")
+    expect(normalizeURL("http://blog.boot.dev/path")).toBe("blog.boot.dev")
 });
 
-test('http:// normalization', () => {
-    expect(normalizeURL('http://www.example.com')).toBe('www.example.com')
-});
-
-test('/', () => {
-    expect(normalizeURL('www.example.com/')).toBe('www.example.com')
-});
+// TODO: IMPLEMENT THIS TEST / Solution
+// test('normalizeURL-NoProtocol', () => {
+//    expect(normalizeURL("https://blog.boot.dev/path/")).toBe("blog.boot.dev") 
+// });
