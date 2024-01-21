@@ -1,16 +1,24 @@
 const {normalizeURL} = require('./crawl.js')
 const {crawlPage} = require('./crawl.js')
+const {getUrlsFromHTLML} = require('./crawl.js')
 
 const main = () => {
 
     if ((process.argv.length < 3) || (process.argv.length > 3)) {
-        console.log("Yeah No");
+        console.log("No Webpage URL provided by user.");
         process.exit()
     }
 
-    const url = process.argv[2]
+    try {
+        const url = process.argv[2]
+        const baseURL = normalizeURL(url)
+        const currentURL = baseURL
+        const pages = crawlPage(baseURL, currentURL, {})
+    } catch (error) {
+        console.log(error)
+    }
 
-    crawlPage(url)
+    console.log(pages)   
     
 }
 
