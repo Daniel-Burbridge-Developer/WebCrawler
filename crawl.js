@@ -37,7 +37,7 @@ const crawlPageDepreciated = async (url) => {
 }
 
 const crawlPage = async (baseURL, currentURL, pages) => {
-    if (!currentURL.contains(baseURL)){
+    if (!currentURL.includes(baseURL)){
         return
     }
     
