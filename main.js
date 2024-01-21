@@ -1,6 +1,5 @@
-const {normalizeURL} = require('./crawl.js')
 const {crawlPage} = require('./crawl.js')
-const {getUrlsFromHTLML} = require('./crawl.js')
+const {printReport} = require('./report.js')
 
 const main = async () => {
 
@@ -13,12 +12,13 @@ const main = async () => {
         const url = process.argv[2]
         const baseURL = url
         const currentURL = url
-        const pages = await crawlPage(baseURL, currentURL, {}).then((pages) => {
-            console.log(pages)
-        })
+        const pages = await crawlPage(baseURL, currentURL, {})
+        printReport(pages)
     } catch (error) {
         console.log(error)
     }
+
+    
 }
 
 main()
