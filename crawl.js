@@ -19,22 +19,29 @@ const getUrlsFromHTLML = (htmlBody, baseURL="") => {
 }
 
 const crawlPage = async (url) => {
-    const response = await fetch(url, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'text/html'
-        }
-    })
-    if (response.status > 399) {
-        console.log("Error - ", response.status)
-        return
-    }
-    const htmlBody = await response.text()
 
-    console.log(htmlBody)
+
+    try {
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'text/html'
+            }
+        })
+        if (response.status > 399) {
+            console.log("Error - ", response.status)
+            return
+        }
+        const html = await response.text()
+        const htmlBody = new JSDOM(html).window.document.querySelector('body').innerHTML
+
+        console.log(htmlBody)
+    } catch (error) {
+        console.log("Error - ", error)
+    }
 }
 
 
 module.exports = {
-    normalizeURL, getUrlsFromHTLML
+    normalizeURL, getUrlsFromHTLML, crawlPage
 }

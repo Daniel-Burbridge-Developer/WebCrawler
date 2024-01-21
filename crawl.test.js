@@ -14,11 +14,10 @@ test('normalizeURLWithProtocol', () => {
 // });
 
 test('LinksFromHTML', () => {
-expect(getUrlsFromHTLML(`<body>
+expect(getUrlsFromHTLML(`
 <h1>This is a Test Page with 2 Links</h1>
 <a href="https://blog.boot.dev/path/">Link 1</a>
-<a href="https://blog.boot.dev/">Link 2</a>
-</body>`)).toEqual(["https://blog.boot.dev/path/", "https://blog.boot.dev/"])
+<a href="https://blog.boot.dev/">Link 2</a>`)).toEqual(["https://blog.boot.dev/path/", "https://blog.boot.dev/"])
 expect(getUrlsFromHTLML(`<body>
 <h1>This is a Test Page with 0 Links</h1>
 </body>`)).toEqual([])

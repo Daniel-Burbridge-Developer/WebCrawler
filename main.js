@@ -8,7 +8,9 @@ const main = () => {
         process.exit()
     }
 
-    crawlPage('https://wagslane.dev')
+    const url = process.argv[2]
+
+    crawlPage(url)
     
 }
 
