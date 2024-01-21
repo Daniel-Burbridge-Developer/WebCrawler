@@ -14,6 +14,7 @@ const main = () => {
         const baseURL = url
         const currentURL = url
         const pages = crawlPage(baseURL, currentURL, {})
+        console.log("Got out alive")
         console.log(pages)
     } catch (error) {
         console.log(error)

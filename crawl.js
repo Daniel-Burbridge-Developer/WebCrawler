@@ -12,28 +12,21 @@ const getUrlsFromHTLML = (htmlBody, baseURL="") => {
     const links = []
     if (atags.length > 0) {
         for (const atag of atags) {
-            links.push(atag.href)
+            if (baseURL != "") {
+                if (atag.href.includes(baseURL)) {
+                    links.push(atag.href)
+                } else {
+                    if (atag.href.startsWith("http")) {
+                        continue
+                    }
+                    links.push(`${baseURL}${atag.href}`)
+                }
+            } else {
+                links.push(atag.href)
+            }
         }
     }
     return links
-}
-
-const crawlPageDepreciated = async (url) => {
-
-        const response = await fetch(url, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'text/html'
-            }
-        })
-        if (response.status > 399) {
-            console.log("Error - ", response.status)
-            return
-        }
-        const html = await response.text()
-        const htmlBody = new JSDOM(html).window.document.querySelector('body').innerHTML
-
-        console.log(htmlBody)
 }
 
 const crawlPage = async (baseURL, currentURL, pages) => {
@@ -60,6 +53,7 @@ const crawlPage = async (baseURL, currentURL, pages) => {
             'Content-Type': 'text/html'
         }
     }) 
+    console.log(response.status)
     
     if (response.status > 399) {
         console.log("Error - ", response.status)
@@ -68,7 +62,9 @@ const crawlPage = async (baseURL, currentURL, pages) => {
         const html = await response.text()
         const htmlBody = new JSDOM(html).window.document.querySelector('body').innerHTML
         const links = getUrlsFromHTLML(htmlBody, baseURL)
+        console.log("Got the links: ", links)
         for (const link of links) {
+            console.log(link)
             crawlPage(baseURL, link, pages)
         }
     } 
