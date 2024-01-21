@@ -11,8 +11,8 @@ const main = () => {
 
     try {
         const url = process.argv[2]
-        const baseURL = normalizeURL(url)
-        const currentURL = baseURL
+        const baseURL = url
+        const currentURL = url
         const pages = crawlPage(baseURL, currentURL, {})
         console.log(pages)
     } catch (error) {

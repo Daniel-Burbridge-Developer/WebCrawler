@@ -41,16 +41,16 @@ const crawlPage = async (baseURL, currentURL, pages) => {
         return
     }
     
-    currentURL = normalizeURL(currentURL, baseURL);
+    normalCurrentURL = normalizeURL(currentURL, baseURL);
 
-    if (pages[currentURL]){
-        pages[currentURL] += 1
+    if (pages[normalCurrentURL]){
+        pages[normalCurrentURL] += 1
         return pages
     } else {
         if (currentURL != baseURL) {
-            pages[currentURL] = 1
+            pages[normalCurrentURL] = 1
         } else {
-            pages[currentURL] = 0
+            pages[normalCurrentURL] = 0
         }      
     }
 
