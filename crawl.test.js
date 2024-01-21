@@ -14,6 +14,13 @@ test('normalizeURLWithProtocol', () => {
 // });
 
 test('LinksFromHTML', () => {
-    expect(getUrlsFromHTLML("<h1>This is a Test Page with no Links</h1>", "./testHTMLOne")).toBe(null)
-    expect(getUrlsFromHTLML('<h1>This is a Test Page with 2 Links</h1><ahref="https://www.google.com">Google</a><ahref="https://www.facebook.com">Facebook</a>')).toBe(['https://www.google.com', 'https://www.facebook.com'])
+expect(getUrlsFromHTLML(`<body>
+<h1>This is a Test Page with 2 Links</h1>
+<a href="https://blog.boot.dev/path/">Link 1</a>
+<a href="https://blog.boot.dev/">Link 2</a>
+</body>`)).toEqual(["https://blog.boot.dev/path/", "https://blog.boot.dev/"])
+expect(getUrlsFromHTLML(`<body>
+<h1>This is a Test Page with 0 Links</h1>
+</body>`)).toEqual([])
 });
+
