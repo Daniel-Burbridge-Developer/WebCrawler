@@ -3,7 +3,7 @@ const {JSDOM} = require('jsdom')
 const { link } = require('node:fs')
 
 const normalizeURL = (url) => {
-    return nodeUrl.parse(url).hostname
+    return nodeUrl.parse(url).href
 }
 
 const getUrlsFromHTLML = (htmlBody, baseURL="") => {
