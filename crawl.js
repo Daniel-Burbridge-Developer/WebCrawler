@@ -62,7 +62,7 @@ const crawlPage = async (baseURL, currentURL, pages) => {
         const htmlBody = new JSDOM(html).window.document.querySelector('body').innerHTML
         const links = getUrlsFromHTLML(htmlBody, baseURL)
         for (const link of links) {
-            crawlPage(baseURL, link, pages)
+            pages = await crawlPage(baseURL, link, pages)
         }
     } 
 

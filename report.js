@@ -10,11 +10,7 @@ const printReport = (pages) => {
 }
 
 const sortReport = (pages) => {
-    sortablePages =[]
-    for (let page in pages) {
-        sortablePages.push([page, pages[page]])
-    }
-    return sortablePages.sort((a, b) => b[1] - a[1])
+    return Object.entries(pages).sort((a, b) => b[1] - a[1])
 }
 
 module.exports = {
